@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.olascoaga.userssp.databinding.ItemUserBinding
 
 class UserAdapter(private val users: List<User>): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
@@ -22,8 +24,13 @@ class UserAdapter(private val users: List<User>): RecyclerView.Adapter<UserAdapt
         val user = users[position]
 
         with(holder) {
-            binding.tvIndex.text = "${user.id}"
+            binding.tvIndex.text = "${position + 1}"
             binding.tvName.text = user.name
+            Glide.with(context).load(user.url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .circleCrop()
+                .into(binding.imgPhoto)
         }
     }
 
