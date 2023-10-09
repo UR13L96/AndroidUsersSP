@@ -6,4 +6,5 @@ data class User (
     var lastName: String,
     var url: String
 ) {
+    fun getFullname(): String = "$name $lastName"
 }
