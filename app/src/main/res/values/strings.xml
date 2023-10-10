@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">UsersSP</string>
     <string name="description_img_photo">User\'s image</string>
+    <string name="sp_first_time">first_time</string>
 </resources>
