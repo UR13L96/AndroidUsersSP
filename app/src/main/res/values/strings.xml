@@ -2,8 +2,9 @@
     <string name="app_name">UsersSP</string>
     <string name="description_img_photo">User\'s image</string>
     <string name="sp_first_time">first_time</string>
-    <string name="dialog_title">User registered</string>
+    <string name="dialog_title">Register user</string>
     <string name="dialog_confirm">Ok</string>
     <string name="helper_username">Obligatory</string>
     <string name="hint_username">Username</string>
+    <string name="sp_username">username</string>
 </resources>
