@@ -44,8 +44,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                         putString(getString(R.string.sp_username), username)
                             .apply()
                     }
+                    Toast.makeText(this, getString(R.string.user_registered), Toast.LENGTH_SHORT).show()
                 })
                 .show()
+        } else {
+            Toast.makeText(this, "Welcome $username!", Toast.LENGTH_SHORT).show()
         }
 
         userAdapter = UserAdapter(getUsers(), this)
