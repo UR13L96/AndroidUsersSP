@@ -22,11 +22,12 @@ class UserAdapter(private val users: List<User>, private val listener: OnClickLi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = users[position]
+        val humanPosition = position + 1
 
         with(holder) {
-            setListener(user, position + 1)
+            setListener(user, humanPosition)
 
-            binding.tvIndex.text = "${position + 1}"
+            binding.tvIndex.text = "$humanPosition"
             binding.tvName.text = user.getFullname()
             Glide.with(context).load(user.url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

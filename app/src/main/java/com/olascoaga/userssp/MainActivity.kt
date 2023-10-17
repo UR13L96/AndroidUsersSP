@@ -1,7 +1,6 @@
 package com.olascoaga.userssp
 
 import android.content.Context
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -36,16 +35,17 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 .setTitle(R.string.dialog_title)
                 .setView(dialogView)
                 .setCancelable(false)
-                .setPositiveButton(R.string.dialog_confirm, { dialogInterface, i ->
-                    val username = dialogView.findViewById<TextInputEditText>(R.id.et_username)
+                .setPositiveButton(R.string.dialog_confirm) { _, _ ->
+                    val newUsername = dialogView.findViewById<TextInputEditText>(R.id.et_username)
                         .text.toString()
                     with(preferences.edit()) {
                         putBoolean(getString(R.string.sp_first_time), false)
-                        putString(getString(R.string.sp_username), username)
+                        putString(getString(R.string.sp_username), newUsername)
                             .apply()
                     }
-                    Toast.makeText(this, getString(R.string.user_registered), Toast.LENGTH_SHORT).show()
-                })
+                    Toast.makeText(this, getString(R.string.user_registered), Toast.LENGTH_SHORT)
+                        .show()
+                }
                 .setNeutralButton(getString(R.string.guest), null)
                 .show()
         } else {
