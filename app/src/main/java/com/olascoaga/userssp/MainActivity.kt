@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     }
                     Toast.makeText(this, getString(R.string.user_registered), Toast.LENGTH_SHORT).show()
                 })
+                .setNeutralButton(getString(R.string.guest), null)
                 .show()
         } else {
             Toast.makeText(this, "Welcome $username!", Toast.LENGTH_SHORT).show()

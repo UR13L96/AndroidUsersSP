@@ -8,4 +8,5 @@
     <string name="hint_username">Username</string>
     <string name="sp_username">username</string>
     <string name="user_registered">User registered</string>
+    <string name="guest">Guest</string>
 </resources>
