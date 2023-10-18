@@ -1,6 +1,7 @@
 package com.olascoaga.userssp
 
 import android.content.Context
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,24 +31,32 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         if (isFirstTime) {
             val dialogView = layoutInflater.inflate(R.layout.dialog_register, null)
-
-            MaterialAlertDialogBuilder(this)
+            val dialog = MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.dialog_title)
                 .setView(dialogView)
                 .setCancelable(false)
-                .setPositiveButton(R.string.dialog_confirm) { _, _ ->
-                    val newUsername = dialogView.findViewById<TextInputEditText>(R.id.et_username)
-                        .text.toString()
+                .setPositiveButton(R.string.dialog_confirm, null)
+                .setNeutralButton(getString(R.string.guest), null)
+                .create()
+            dialog.show()
+
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+                val newUsername = dialogView.findViewById<TextInputEditText>(R.id.et_username)
+                    .text.toString()
+                if (newUsername.isBlank()) {
+                    Toast.makeText(this, getString(R.string.username_required), Toast.LENGTH_SHORT)
+                        .show()
+                } else {
                     with(preferences.edit()) {
                         putBoolean(getString(R.string.sp_first_time), false)
                         putString(getString(R.string.sp_username), newUsername)
                             .apply()
                     }
+                    dialog.dismiss()
                     Toast.makeText(this, getString(R.string.user_registered), Toast.LENGTH_SHORT)
                         .show()
                 }
-                .setNeutralButton(getString(R.string.guest), null)
-                .show()
+            }
         } else {
             Toast.makeText(this, "Welcome $username!", Toast.LENGTH_SHORT).show()
         }

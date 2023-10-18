@@ -9,4 +9,5 @@
     <string name="sp_username">username</string>
     <string name="user_registered">User registered</string>
     <string name="guest">Guest</string>
+    <string name="username_required">Username is required</string>
 </resources>
